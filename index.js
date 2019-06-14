@@ -140,7 +140,7 @@ app.post('/interactive', (req, res) => {
 	  host: 'api.github.com',
 	  path: '/repos/aelkugia/Issue-Slack-Bot/issues?access_token='+GITHUB_SECRET+'&scope=public_repo', // Repo can be updated here, path follows: /repos/GITHUB_USER_NAME/REPOSITORY/...
 	  headers: { 
-	    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0', // Listing user-agent which allows network protocol peers to identify app type, OS, software vendor/version. To ensure allowance of accessing issues repo
+	    'User-Agent': 'Issue-Slack-Bot', // Listing user-agent which allows network protocol peers to identify app type, OS, software vendor/version. To ensure allowance of accessing issues repo
 	  },
 	  method: 'POST'
 	};
@@ -172,10 +172,13 @@ app.post('/interactive', (req, res) => {
 	  .catch((err) => {
 
 	  		if(err.response.status == 422) {
+	  			console.log(err);
 	  			console.log("Sending invalid fields. Please ensure assignee, label, and milestone exist in Github.");
 	  		} else if (err.response.status == 400) {
+	  			console.log(err);
 	  			console.log("Sending wrong type of JSON value. Please review body message.");
 	  		} else {
+	  			console.log(err);
 	  			console.log("The following error occured:" + err.response.statusText);
 	  		}
   	});
