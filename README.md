@@ -78,8 +78,9 @@ Also the current setup involves creating a localhost tunnel with ngrok. Make sur
 
  1. Clone this repo and run `npm install`
  
- 3. Update your environment variables with your API credentials and set to `.env` (see `.env.sample`)
- 4. We will be running locally, so ensure you open another terminal and type the following `ngrok http 4390` (this port must match what is set in *index.js* where we set `const PORT=4390` 
+ 2. Update your environment variables with your API credentials and set to `.env` (see `.env.sample`)
+ 3. We will be running locally, so ensure you open another terminal, navigate to the directory where you unzipped ngrok and start it by telling it which port we want to expose to the public internet. To do this type the following `./ngrok http 4390` (this port must match what is set in *index.js* where we set `const PORT=4390` )
+ 4. If ngrok is on your `$PATH` you can simply type the following from any directory `ngrok http 4390`
  5. Now to run the app type `node index.js`
 
 
